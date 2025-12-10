@@ -8,9 +8,11 @@ class LogoOfQuiz extends StatelessWidget
   @override
   Widget build(BuildContext context) 
   {
-    return Column(
+    return Column
+    (
       children: 
       [
+        //this conainer is used to show the image of quiz logo
         Container
         (
           alignment: Alignment.topCenter,

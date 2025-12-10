@@ -13,12 +13,20 @@ class QuestionsSection extends StatelessWidget
     (
       appBar: AppBar
       (
-          title: Text('Quiz App', style: TextStyle(fontSize: 25, fontWeight: FontWeight.bold, color: const Color.fromARGB(255, 69, 56, 18)),),
-        ),
-        body: Center
+        title: Text('Quiz App', style: TextStyle(fontSize: 25, fontWeight: FontWeight.bold, color: const Color.fromARGB(255, 69, 56, 18)),),
+      ),
+      body: Container
+      (
+        decoration: BoxDecoration
         (
-          child: Text("This is the Questions Section", style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold),),
-        )   ,
+          gradient: LinearGradient
+          (
+            colors: [const Color.fromARGB(255, 16, 155, 255), const Color.fromARGB(255, 34, 95, 251)],
+            begin: FractionalOffset.centerLeft,
+            end: FractionalOffset.centerRight,
+          )
+        ),
+      )
     );
   }
 }
