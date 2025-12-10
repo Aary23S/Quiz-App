@@ -41,9 +41,23 @@ class _QuizState extends State<Quiz>
         (
           title: Text('Quiz App', style: TextStyle(fontSize: 25, fontWeight: FontWeight.bold, color: const Color.fromARGB(255, 69, 56, 18)),),
         ),
-        body: Center
+        //container is for the decoration and styiling purpose
+        body: Container
         (
-          child: activeScreen,
+          decoration: const BoxDecoration
+          (
+            gradient: LinearGradient
+            (
+              colors: [Color.fromARGB(255, 16, 155, 255), Color.fromARGB(255, 34, 95, 251)],
+              begin: FractionalOffset.centerLeft,
+              end: FractionalOffset.centerRight,
+            )
+          ),
+          //centering the child widget of container
+          child: Center
+          (
+            child: activeScreen,
+          )
         )      
       )
     );

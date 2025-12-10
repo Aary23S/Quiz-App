@@ -16,17 +16,22 @@ class _QuestionsSectionState extends State<QuestionsSection>
   @override
   Widget build(context) 
   {
-    return Container
+    return Column
     (
-      decoration: BoxDecoration
-      (
-        gradient: LinearGradient
-        (
-          colors: [const Color.fromARGB(255, 16, 155, 255), const Color.fromARGB(255, 34, 95, 251)],
-          begin: FractionalOffset.centerLeft,
-          end: FractionalOffset.centerRight,
-        )
-      ),
-    ); //returning Container widget with gradient background
+      mainAxisAlignment: MainAxisAlignment.center,
+      children:
+      [
+        Text("Question 1", style: 
+        TextStyle(fontSize: 24, fontWeight: FontWeight.bold, color: Colors.white,),),
+        SizedBox(height: 20,),
+        ElevatedButton(onPressed: (){}, child: Text("Answer 1")),
+        SizedBox(height: 10,),
+        ElevatedButton(onPressed: (){}, child: Text("Answer 2")), 
+        SizedBox(height: 10,),
+        ElevatedButton(onPressed: (){}, child: Text("Answer 3")),
+        SizedBox(height: 10,),
+        ElevatedButton(onPressed: (){}, child: Text("Answer 4")),
+      ] 
+    );
   }
 }
