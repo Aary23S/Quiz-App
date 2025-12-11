@@ -1,7 +1,8 @@
 // ignore_for_file: unused_import
 
 import 'package:flutter/material.dart';
-
+import 'package:quiz_app/answer_buttons.dart';
+import 'package:quiz_app/questions_data.dart';
 class QuestionsSection extends StatefulWidget 
 {
   const QuestionsSection({super.key});
@@ -11,26 +12,46 @@ class QuestionsSection extends StatefulWidget
 }
 
 class _QuestionsSectionState extends State<QuestionsSection> 
-{
+{  
+  int currentQuestionIdx = 0;
+  void changeQuestion()
+  {  
+    setState(() {
+      if(currentQuestionIdx < question.length - 1) {
+        currentQuestionIdx+=1;
+      }  
+      else{
+        currentQuestionIdx = 0;
+      }
+    });
+    
+  }
+  
   
   @override
   Widget build(context) 
   {
+    final currentQuestion = question[currentQuestionIdx];
+    
     return Column
     (
       mainAxisAlignment: MainAxisAlignment.center,
       children:
       [
-        Text("Question 1", style: 
-        TextStyle(fontSize: 24, fontWeight: FontWeight.bold, color: Colors.white,),),
+        Text(currentQuestion.questionText!, style: 
+        TextStyle(fontSize: 24, fontWeight: FontWeight.bold, color: Colors.white,),textAlign: TextAlign.center,),
         SizedBox(height: 20,),
-        ElevatedButton(onPressed: (){}, child: Text("Answer 1")),
-        SizedBox(height: 10,),
-        ElevatedButton(onPressed: (){}, child: Text("Answer 2")), 
-        SizedBox(height: 10,),
-        ElevatedButton(onPressed: (){}, child: Text("Answer 3")),
-        SizedBox(height: 10,),
-        ElevatedButton(onPressed: (){}, child: Text("Answer 4")),
+
+        ...currentQuestion.getAnsShuffuled().map((answer) 
+        {
+          return Padding
+          (
+            padding: const EdgeInsets.symmetric(vertical: 8),
+            
+            child: AnswerButtons(answerText: answer, onTap: changeQuestion),
+          );
+        })
+        
       ] 
     );
   }
