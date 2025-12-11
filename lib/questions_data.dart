@@ -2,6 +2,8 @@ import 'package:quiz_app/model/question_model.dart';
 
 const question =
 [
+  //when the index=0 this constructer will be called and parameters will be passed to it
+  //creating objects of QuizQuestions class
   QuizQuestions
   (
     questionText: "What is the capital of France?",

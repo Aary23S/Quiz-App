@@ -1,15 +1,20 @@
-class QuizQuestions 
-{
-  const QuizQuestions({this.questionText, this.answers});
-
+class QuizQuestions {
+  
   final String? questionText;
   final List<String>? answers;
 
-  List<String> getAnsShuffuled()
-  {
+  const QuizQuestions({this.questionText, this.answers});
+  /*
+    QuizQuestions({String? questionText, List<String>? answers}) 
+    { this.questionText = questionText; this.answers = answers; }
+
+  */
+
+
+  List<String> getAnsShuffuled() {
     final shuffledList = List.of(answers!);
     shuffledList.shuffle();
-    
+
     return shuffledList;
   }
 }

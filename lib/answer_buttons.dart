@@ -4,9 +4,12 @@ import 'package:flutter/material.dart';
 
 class AnswerButtons extends StatelessWidget 
 {
-  const AnswerButtons({super.key,required this.answerText, required this.onTap});
   final String answerText;
   final void Function() onTap;
+  //answerText and onTap are required parameters. answerText holds the text of the answer button
+  //onTap holds the function to be executed when the button is pressed which are passed from parent widget 
+  //from questions_section.dart which is changeQuestion function 
+  const AnswerButtons({super.key,required this.answerText, required this.onTap});
   
   @override
   Widget build(context) 
@@ -24,7 +27,8 @@ class AnswerButtons extends StatelessWidget
           shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(15)),
           
         ),
-
+        //onPressed will execute the function passed from parent widget which is changeQuestion function 
+        //which increments the currentQuestionIdx to show the next question 
         onPressed: onTap, 
         child: Text
         (
