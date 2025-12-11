@@ -5,6 +5,7 @@ class LogoOfQuiz extends StatelessWidget
 {
   //constructor accepting a function to switch screens 
   //from logo to questions section of the quiz app
+  //switchScreen function is passed from parent widget quiz.dart as a parameter named as startQuiz
   const LogoOfQuiz(this.startQuiz, {super.key});
 
   //function to switch screens 
@@ -46,3 +47,8 @@ class LogoOfQuiz extends StatelessWidget
     );
   }
 }
+
+//LogoOfQuiz widget displays the logo of the quiz app along with a welcome message and a button to start the quiz
+//When the Start Quiz button is pressed the startQuiz function is called which switches the screen to QuestionsSection widget
+//This widget is used as the initial screen of the quiz app before the user starts the quiz defined in quiz.dart because of activeScreen variable
+//which initially holds the LogoOfQuiz widget.

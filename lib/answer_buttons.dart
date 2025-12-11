@@ -30,6 +30,8 @@ class AnswerButtons extends StatelessWidget
         //onPressed will execute the function passed from parent widget which is changeQuestion function 
         //which increments the currentQuestionIdx to show the next question 
         onPressed: onTap, 
+        //displaying the answer text on the button passed from parent widget named as answerText from questions_section.dart
+        //which holds the text of the answer button. This is just the UI part of the answer button
         child: Text
         (
         answerText, 
