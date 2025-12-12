@@ -15,6 +15,7 @@ class ResultScreen extends StatelessWidget
     
     for(int i=0; i<selectedAnswers.length; i++)
     {
+      
       summary.add({
         'questionIndex': i,
         'question': question[i].questionText!,

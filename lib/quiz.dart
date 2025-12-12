@@ -13,6 +13,28 @@ class Quiz extends StatefulWidget
 class _QuizState extends State<Quiz> 
 {
   List<String> selectedAnswers = [];
+
+  void setAnswerAt(int index, String answer){
+    setState
+    (
+      ()
+      {
+        if(index< selectedAnswers.length)
+        {
+          selectedAnswers[index] = answer;
+        }
+        else{
+          while(selectedAnswers.length < index)
+          {
+            selectedAnswers.add('');
+          }
+          selectedAnswers.add(answer);
+        }
+      }
+    
+    );
+  }
+
   
   //the answer is received from QuestionsSection widget when an answer button is pressed as selectedAnswer which is here named as answer
   //and then this answer is added to the selectedAnswers list
@@ -49,7 +71,7 @@ void switchScreen()
   (
     () 
     {
-      activeScreen = QuestionsSection(onSelectAnswer: chooseAnswer, onQuizFinish: goToResultScreen,);
+      activeScreen = QuestionsSection(onSelectAnswer: chooseAnswer, onQuizFinish: goToResultScreen, onUpdateAnswer: setAnswerAt,);
     },
   );
 }

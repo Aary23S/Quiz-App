@@ -7,10 +7,11 @@ import 'package:quiz_app/questions_data.dart';
 //QuestionsSection (widget): immutable configuration, constructor, identity
 class QuestionsSection extends StatefulWidget 
 {
-  const QuestionsSection({super.key, required this.onSelectAnswer, required this.onQuizFinish});
+  const QuestionsSection({super.key, required this.onSelectAnswer, required this.onQuizFinish, this.onUpdateAnswer});
 
   final void Function(String answer) onSelectAnswer;
   final void Function() onQuizFinish;
+  final void Function(int index, String answer)? onUpdateAnswer;
   @override
   State<QuestionsSection> createState() => _QuestionsSectionState();
 }
@@ -27,7 +28,7 @@ class _QuestionsSectionState extends State<QuestionsSection>
     //calling the onSelectAnswer function passed from parent widget quiz.dart
     //to add the selected answer to the selectedAnswers list in quiz.dart
     //selectedAnswer is the answer selected by the user
-    widget.onSelectAnswer(selectedAnswer);
+    widget.onUpdateAnswer!(currentQuestionIdx, selectedAnswer);
     
     setState
     (
