@@ -59,11 +59,21 @@ void goToResultScreen(){
   (
     ()
     {
-      activeScreen = ResultScreen(selectedAnswers: selectedAnswers);
+      activeScreen = ResultScreen(selectedAnswers: selectedAnswers, onRestart: restartQuiz,);
+      
     }
   );
 }
 
+void restartQuiz(){
+  setState
+  (
+    (){
+      selectedAnswers = [];
+      activeScreen = LogoOfQuiz(switchScreen);
+    }
+  );
+}
 
   @override
   Widget build(context) 
