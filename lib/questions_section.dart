@@ -29,17 +29,33 @@ class _QuestionsSectionState extends State<QuestionsSection>
     //selectedAnswer is the answer selected by the user
     widget.onSelectAnswer(selectedAnswer);
     
-    setState(() {
-      if(currentQuestionIdx < question.length - 1) {
-        currentQuestionIdx+=1;
-      }  
-      else{
-        widget.onQuizFinish();
-      }
-    });
+    setState
+    (
+      () 
+      {
+        if(currentQuestionIdx < question.length - 1) 
+        {
+          currentQuestionIdx+=1;
+        }  
+        else
+        {
+          widget.onQuizFinish();
+        }
+      });
     
   }
   
+  //function changing the state to go to previous question 
+  //by decrementing the currentQuestionIdx by 1
+  void goToPreviousQuestion(){
+    setState(
+      (){
+        if(currentQuestionIdx>0){
+          currentQuestionIdx-=1;
+        }
+      }
+    );
+  }
   
   @override
   Widget build(context) 
@@ -52,11 +68,29 @@ class _QuestionsSectionState extends State<QuestionsSection>
       mainAxisAlignment: MainAxisAlignment.center,
       children:
       [
+        //widget to show the question number out of tot questions 
+        // and the back button to go to previous question
+        Row(
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          children: 
+          [
+            IconButton
+            (
+              onPressed: currentQuestionIdx>0 ? goToPreviousQuestion : null, 
+              icon: const Icon(Icons.arrow_back, color: Colors.white,),
+            ),
+            Text
+            (
+              'Question ${currentQuestionIdx + 1} of ${question.length}', 
+              style: const TextStyle(fontSize: 20, color: Colors.white, fontWeight: FontWeight.bold,),
+            ),
+            const SizedBox(width: 48,), //to balance the space taken by the back button
+          ],
+        ),
         //displaying the question text
         Text(currentQuestion.questionText!, style: 
         TextStyle(fontSize: 24, fontWeight: FontWeight.bold, color: Colors.white,),textAlign: TextAlign.center,),
         SizedBox(height: 20,),
-
         //mapping through the answers list and creating AnswerButtons for each answer
         ...currentQuestion.getAnsShuffuled().map( (answer) 
         {
@@ -70,6 +104,9 @@ class _QuestionsSectionState extends State<QuestionsSection>
               onTap: () 
               {
                 // widget.onSelectAnswer(answer);
+                // calling the changeQuestion function when an answer button is pressed and 
+                // passing the selected answer to it which is here named as answer contains 
+                //the text of the answer button
                 changeQuestion(answer);
               }
             ),

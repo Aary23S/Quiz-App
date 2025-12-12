@@ -7,11 +7,12 @@ class ResultScreen extends StatelessWidget
 {
   const ResultScreen({super.key, required this.selectedAnswers, required this.onRestart});
   final List<String> selectedAnswers;
-  
   final void Function() onRestart;
+
   List<Map<String, Object>> getSummaryData()
   {
     final List<Map<String, Object>> summary = [];
+    
     for(int i=0; i<selectedAnswers.length; i++)
     {
       summary.add({
